@@ -1,0 +1,82 @@
+Metadata-Version: 2.4
+Name: tryton
+Version: 7.4.9
+Summary: Tryton desktop client
+Home-page: http://www.tryton.org/
+Download-URL: http://downloads.tryton.org/7.4/
+Author: Tryton
+Author-email: foundation@tryton.org
+License: GPL-3
+Project-URL: Bug Tracker, https://bugs.tryton.org/
+Project-URL: Documentation, https://docs.tryton.org/latest/client-desktop/
+Project-URL: Forum, https://www.tryton.org/forum
+Project-URL: Source Code, https://code.tryton.org/tryton
+Keywords: business application ERP
+Platform: any
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Environment :: X11 Applications :: GTK
+Classifier: Framework :: Tryton
+Classifier: Intended Audience :: End Users/Desktop
+Classifier: License :: OSI Approved :: GNU General Public License (GPL)
+Classifier: Natural Language :: Bulgarian
+Classifier: Natural Language :: Catalan
+Classifier: Natural Language :: Chinese (Simplified)
+Classifier: Natural Language :: Czech
+Classifier: Natural Language :: Dutch
+Classifier: Natural Language :: English
+Classifier: Natural Language :: Finnish
+Classifier: Natural Language :: French
+Classifier: Natural Language :: German
+Classifier: Natural Language :: Hungarian
+Classifier: Natural Language :: Indonesian
+Classifier: Natural Language :: Italian
+Classifier: Natural Language :: Persian
+Classifier: Natural Language :: Polish
+Classifier: Natural Language :: Portuguese (Brazilian)
+Classifier: Natural Language :: Romanian
+Classifier: Natural Language :: Russian
+Classifier: Natural Language :: Slovenian
+Classifier: Natural Language :: Spanish
+Classifier: Natural Language :: Turkish
+Classifier: Natural Language :: Japanese
+Classifier: Natural Language :: Ukrainian
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Classifier: Topic :: Office/Business
+Requires-Python: >=3.8
+License-File: LICENSE
+Requires-Dist: pycairo
+Requires-Dist: python-dateutil
+Requires-Dist: PyGObject>=3.19
+Provides-Extra: calendar
+Requires-Dist: GooCalendar>=0.7; extra == "calendar"
+Provides-Extra: sound
+Requires-Dist: playsound3; extra == "sound"
+Dynamic: author
+Dynamic: author-email
+Dynamic: classifier
+Dynamic: description
+Dynamic: download-url
+Dynamic: home-page
+Dynamic: keywords
+Dynamic: license
+Dynamic: license-file
+Dynamic: platform
+Dynamic: project-url
+Dynamic: provides-extra
+Dynamic: requires-dist
+Dynamic: requires-python
+Dynamic: summary
+
+tryton
+======
+
+The desktop client of Tryton.
+Tryton is business software, ideal for companies of any size, easy to use,
+complete and 100% Open Source.
+It provides modularity, scalability and security.

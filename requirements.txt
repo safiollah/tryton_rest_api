@@ -1,0 +1,19 @@
+cookiecutter
+# marshmallow
+psycopg2-binary
+# PyJWT
+tzdata
+# pillow
+# pytz
+# PyWebDAV3
+# vobject
+# beren
+# pendulum
+# qrcode
+# python-barcode
+# pydicom
+# matplotlib
+# python-magic
+# python-magic-bin
+PyGObject>=3.50,<3.52.1
+trytond-sale

@@ -1,0 +1,54 @@
+services:
+  postgres:
+    image: postgres:15
+    container_name: trytonrestdefaultdb
+    environment:
+      POSTGRES_USER: tryton
+      POSTGRES_PASSWORD: tryton
+      POSTGRES_DB: tryton
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_rest_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U tryton"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+
+  trytond:
+    build: .
+    container_name: trytonrestdefaultapp
+    depends_on:
+      postgres:
+        condition: service_healthy
+    ports:
+      - "8090:8090"
+    volumes:
+      - tryton_filestore:/home/tryton/filestore
+    environment:
+      TRYTOND_DATABASE_URI: postgresql://tryton:tryton@postgres:5432/
+      TRYTOND_DATABASE_NAME: tryton
+      TRYTOND_ADMIN_PASSWORD: ${TRYTOND_ADMIN_PASSWORD:-admin}
+      TRYTOND_ADMIN_EMAIL: ${TRYTOND_ADMIN_EMAIL:-}
+    command:
+      - /bin/bash
+      - -c
+      - |
+        set -e
+        echo "Waiting for database..."
+        (until echo > /dev/tcp/postgres/5432; do sleep 0.5; done) 2>/dev/null
+        echo "Database available."
+        echo "Running trytond-admin..."
+        echo "${TRYTOND_ADMIN_PASSWORD}" > /tmp/.passwd
+        TRYTONPASSFILE=/tmp/.passwd trytond-admin -c /etc/trytond.conf -d ${TRYTOND_DATABASE_NAME} --all --email "${TRYTOND_ADMIN_EMAIL}" -vv
+        rm /tmp/.passwd
+        echo "trytond-admin finished."
+        echo "Starting server..."
+        exec trytond -c /etc/trytond.conf --pidfile=
+    restart: unless-stopped
+
+volumes:
+  postgres_rest_data:
+  tryton_filestore: 

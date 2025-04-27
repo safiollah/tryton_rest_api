@@ -1,0 +1,171 @@
+{
+    "info": {
+      "name": "Tryton REST API Test",
+      "_postman_id": "d1d9d5c5-1234-4f34-bb12-1234567890a2",
+      "description": "Testing Tryton REST API with naiad",
+      "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+      {
+        "name": "Search Parties",
+        "request": {
+          "method": "GET",
+          "header": [
+            {
+              "key": "Authorization",
+              "value": "Bearer {{api_key}}",
+              "type": "text"
+            }
+          ],
+          "url": {
+            "raw": "{{tryton_url}}/{{database}}/rest/model/party.party?d=W1siYWN0aXZlIiwiPSIsdHJ1ZV1d&s=5",
+            "host": ["{{tryton_url}}"],
+            "path": ["{{database}}", "rest", "model", "party.party"],
+            "query": [
+              {
+                "key": "d",
+                "value": "W1siYWN0aXZlIiwiPSIsdHJ1ZV1d"
+              },
+              {
+                "key": "s",
+                "value": "5"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "name": "Get Single Party",
+        "request": {
+          "method": "GET",
+          "header": [
+            {
+              "key": "Authorization",
+              "value": "Bearer {{api_key}}",
+              "type": "text"
+            }
+          ],
+          "url": {
+            "raw": "{{tryton_url}}/{{database}}/rest/model/party.party/{{party_id}}",
+            "host": ["{{tryton_url}}"],
+            "path": ["{{database}}", "rest", "model", "party.party", "{{party_id}}"]
+          }
+        }
+      },
+      {
+        "name": "Create Party",
+        "request": {
+          "method": "POST",
+          "header": [
+            {
+              "key": "Authorization",
+              "value": "Bearer {{api_key}}",
+              "type": "text"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json",
+              "type": "text"
+            }
+          ],
+          "body": {
+            "mode": "raw",
+            "raw": "{\n  \"name\": \"Test Party via REST\",\n  \"active\": true\n}"
+          },
+          "url": {
+            "raw": "{{tryton_url}}/{{database}}/rest/model/party.party",
+            "host": ["{{tryton_url}}"],
+            "path": ["{{database}}", "rest", "model", "party.party"]
+          }
+        }
+      },
+      {
+        "name": "Update Party",
+        "request": {
+          "method": "PUT",
+          "header": [
+            {
+              "key": "Authorization",
+              "value": "Bearer {{api_key}}",
+              "type": "text"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json",
+              "type": "text"
+            }
+          ],
+          "body": {
+            "mode": "raw",
+            "raw": "{\n  \"name\": \"Test Party via REST (Updated)\"\n}"
+          },
+          "url": {
+            "raw": "{{tryton_url}}/{{database}}/rest/model/party.party/{{party_id}}",
+            "host": ["{{tryton_url}}"],
+            "path": ["{{database}}", "rest", "model", "party.party", "{{party_id}}"]
+          }
+        }
+      },
+      {
+        "name": "Pagination (0-9)",
+        "request": {
+          "method": "GET",
+          "header": [
+            {
+              "key": "Authorization",
+              "value": "Bearer {{api_key}}",
+              "type": "text"
+            },
+            {
+              "key": "Range",
+              "value": "items=0-9",
+              "type": "text"
+            }
+          ],
+          "url": {
+            "raw": "{{tryton_url}}/{{database}}/rest/model/party.party",
+            "host": ["{{tryton_url}}"],
+            "path": ["{{database}}", "rest", "model", "party.party"],
+            "query": []
+          }
+        }
+      },
+      {
+        "name": "Delete Party",
+        "request": {
+          "method": "DELETE",
+          "header": [
+            {
+              "key": "Authorization",
+              "value": "Bearer {{api_key}}",
+              "type": "text"
+            }
+          ],
+          "url": {
+            "raw": "{{tryton_url}}/{{database}}/rest/model/party.party/{{party_id}}",
+            "host": ["{{tryton_url}}"],
+            "path": ["{{database}}", "rest", "model", "party.party", "{{party_id}}"]
+          }
+        }
+      }
+    ],
+    "variable": [
+      {
+        "key": "tryton_url",
+        "value": "http://localhost:8080"
+      },
+      {
+        "key": "database",
+        "value": "tryton_rest_db"
+      },
+      {
+        "key": "api_key",
+        "value": "64d2b609dcb84d3d9f0f766fa9b8734e9fde53642d5d46bdad0fb78aa2cbc1398e5f598454664144b5047f2b332ce3f10f4073005abb4fa3b5f227db5bd5452e"
+      },
+      {
+        "key": "party_id",
+        "value": "1"
+      }
+    ]
+  }
+  

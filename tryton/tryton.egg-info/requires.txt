@@ -1,0 +1,9 @@
+pycairo
+python-dateutil
+PyGObject>=3.19
+
+[calendar]
+GooCalendar>=0.7
+
+[sound]
+playsound3
