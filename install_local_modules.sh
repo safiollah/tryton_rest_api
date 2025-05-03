@@ -18,4 +18,8 @@ echo "Installing naiad..."
 cd "$SCRIPT_DIR/naiad"
 pip install .
 
+echo "Installing rest_login..."
+cd "$SCRIPT_DIR/rest_login"
+pip install .
+
 echo "All local modules installed successfully." 

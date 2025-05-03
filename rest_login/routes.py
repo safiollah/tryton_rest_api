@@ -83,14 +83,17 @@ def rest_login(request, pool):
         )
 
         if not application_keys:
-            logger.warning(f"API key 'rest' not found for authenticated user")
-            return Response(
-                json.dumps({'error': "API key not configured for this user"}),
-                status=HTTPStatus.NOT_FOUND,
-                content_type='application/json'
+            logger.info(f"Creating new REST API key for user")
+            # Create a new application key for the user
+            application = UserApplication(
+                user=user_id,
+                application='rest',
+                state='validated'
             )
-
-        api_key = application_keys[0].get('key')
+            application.save()
+            api_key = application.key
+        else:
+            api_key = application_keys[0].get('key')
 
         if not api_key:
             logger.error("Found application record but key field is empty")

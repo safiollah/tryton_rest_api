@@ -6,7 +6,7 @@ import sys
 script_dir = os.path.dirname(os.path.abspath(__file__))
 
 # List of modules to install relative to the script directory
-modules = ["tryton", "trytond", "naiad"]
+modules = ["tryton", "trytond", "naiad", "rest_login"]
 
 # Get the Python interpreter executable
 python_executable = sys.executable
